@@ -9,7 +9,7 @@ def produce_thumbnail_and_redirect(request, path):
     
     if width is not None or height is not None:
         thumb = Thumbnail(path, width, height)
-        dest_path = thumb.dest
+        dest_path = thumb.final_dest
     else:
         dest_path = path
     
