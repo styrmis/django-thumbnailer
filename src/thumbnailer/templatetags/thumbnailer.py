@@ -1,6 +1,7 @@
 from django.template import Library
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from django.utils.safestring import mark_safe
 
 register = Library()
 
@@ -21,4 +22,6 @@ def thumbnail(image, size):
     
     url = "%s%s?%s" % ( '/thumb/', image.name, qstring )
     
-    return url
+    # Perhaps want to do more checks for safety
+    return mark_safe(url)
+thumbnail.is_safe = True
